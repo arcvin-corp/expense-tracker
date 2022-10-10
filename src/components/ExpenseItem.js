@@ -1,19 +1,15 @@
 import "./ExpenseItem.css";
-import { months } from "../config";
+import ExpenseDate from "./ExpenseDate";
 
-function ExpenseItem() {
-  const expenseDate = new Date();
-  const expenseTitle = "Bike insurance";
-  const expensePrice = 250.55;
+function ExpenseItem(props) {
+  const expsenseDate = props.date;
 
   return (
     <div className="expense-item">
-      <h2>{`${months[expenseDate.getMonth()]} ${expenseDate.getDate()} ${expenseDate.getFullYear()}`}</h2>
+      <ExpenseDate date={expsenseDate}></ExpenseDate>
       <div className="expense-item__description">
-        <h2>{expenseTitle}</h2>
-        <div className="expense-item__price">
-          <h2>{expensePrice}</h2>
-        </div>
+        <h2>{props.title}</h2>
+        <div className="expense-item__price">{props.amount}</div>
       </div>
     </div>
   );
